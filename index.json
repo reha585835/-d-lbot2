@@ -1,0 +1,38 @@
+const Discord = require("discord.js");
+const Proton = require("proton-io"); 
+const client = new Discord.Client();
+
+//proton ayarlar kısmımız burada
+let komutKlasör = "./komutlar" 
+
+let eventLoad = "./events" 
+
+let ownerIDs = ["276057718354083860" , "323757986755510275"] 
+
+let owner = true; 
+
+let defaultCommands = true; 
+
+
+ 
+const komutYukle = 
+new proton(client,komutKlasör,eventLoad,ownerIDs,{owner,defaultCommands})
+
+
+
+
+let botlaraCevapVer = false;
+
+let etiketlePrefixOgren = true; 
+
+let etiketiPrefixOlarakKullan = true; 
+
+client.on('message', async (msg) => {
+komutYukle.message(
+msg,prefix,{botlaraCevapVer,etiketiPrefixOlarakKullan,
+etiketlePrefixOgren}
+)
+})
+
+
+client.login("NzgzMjg3MTA3NjAyNDgxMTUy.X8Yi9w.qPSYlyS3LVliok4B98jtSlUpgl8")
